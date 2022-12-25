@@ -36,16 +36,23 @@
                 </div>
                 <div class="card-body">
                     {{-- form --}}
-                    <form>
+                    <form method="POST" enctype="multipart/form-data" action="{{ Route('product.storeData') }}">
+                      @csrf
+        
+                      @if ($errors->any())
+                          <div class="error-message">
+                              {{ $errors->first() }}
+                          </div>
+                      @endif
                         {{-- name --}}
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Name</label>
-                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Write your name here">
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Write your name here" name="insert-name">
                         </div>
                         {{-- category --}}
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Category</label>
-                          <select class="form-control" id="exampleFormControlSelect1" placeholder="Select a category">
+                          <select class="form-control" id="exampleFormControlSelect1" placeholder="Select a category" name="insert-category">
                             <option>House</option>
                             <option>Camera</option>
                             <option>Sport</option>
@@ -55,17 +62,17 @@
                         {{-- detail --}}
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Detail</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="insert-detail"></textarea>
                         </div>
                         {{-- price --}}
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Price</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Input price here">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Input price here" name="insert-price">
                           </div>
                         {{-- photo --}}
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Photo</label>
-                            <input type="file" class="form-control-file border col-form-label" id="exampleFormControlFile1">
+                            <input type="file" class="form-control-file border col-form-label" id="exampleFormControlFile1" name="insert-image">
                           </div>
                         {{-- button --}}
                           <button type="submit" class="btn btn-primary">Add</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -18,9 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->get();
-        dd('products');
-        return view('index', ['products'=>$products]);
+        $product = DB::table('products')->get();
+        // dd('products');
+        return view('home', ['products'=>$product]);
     }
 
     /**
@@ -31,6 +32,11 @@ class ProductController extends Controller
     public function create()
     {
         //
+    }
+
+    public function productDetail(Request $request){
+        $Detail = Product::where('id', $request->id)->get();
+        return view('detail-product', ['Detail'=>$Detail]);
     }
 
     /**

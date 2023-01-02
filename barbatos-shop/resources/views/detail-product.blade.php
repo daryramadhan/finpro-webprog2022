@@ -1,5 +1,5 @@
 @include('template.navbar')
-
+{{-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,44 +10,46 @@
     <link rel="stylesheet" href="#">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/f8eea84980.js"></script>
-</head>
+</head> --}}
 <body class="bg-dark">
 
     <div class="container">
         {{-- container --}}
         <p class="m-2"><a href="/home">Back</a></p>
+        @foreach ($Detail as $detail)
         <div class="card col-12">
-            <div class="row justify-content-center col-12">
-              <div class="col-md-4">
-                <img src="..." alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Azarine Oil Free Brightening Daily Mousturizer</h5>
-                  <div class="row">
-                    <div class="col-sm-2">Detail</div>
-                    <div class="col-sm-10">
-                        <p>Moisturizing Cream Gel for Oily skin & Acne Prone Skin Moisturizer morning and night, practical, light and quickly permeates the skin formulated for oily, combination and acne-prone skin. With oil control technology that is able to HOLD OIL for severa hours INSTANTly & gives a MATTE effect on the skin.</p>
-                    </div>
+          <div class="row justify-content-center col-12">
+            <div class="col-md-4">
+              <img src="..." alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ $detail->product_name }}</h5>
+                <div class="row">
+                  <div class="col-sm-2">Detail</div>
+                  <div class="col-sm-10">
+                    <p>{{ $detail->product_detail }}</p>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-2">Price</div>
-                    <div class="col-sm-10">
-                        <p>IDR 24.000</p>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputQty" class="col-sm-2 col-form-label">Input Qty</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputQty">
-                    </div>
-                  </div>
-                  <p class="card-text"><small class="text-muted">Please re-check your items!</small></p>
-                  <button type="submit" class="btn btn-primary">Purchase</button>
                 </div>
+                <div class="row">
+                  <div class="col-sm-2">Price</div>
+                  <div class="col-sm-10">
+                    <p>IDR {{ $detail->product_price }}</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputQty" class="col-sm-2 col-form-label">Input Qty</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputQty">
+                  </div>
+                </div>
+                <p class="card-text"><small class="text-muted">Please re-check your items!</small></p>
+                <button type="submit" class="btn btn-primary">Purchase</button>
               </div>
             </div>
           </div>
+        </div>
+        @endforeach
 
     </div>
 
@@ -64,4 +66,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 </body>
-</html>
+{{-- </html> --}}

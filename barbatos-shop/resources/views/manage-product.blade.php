@@ -1,6 +1,6 @@
 @include('template.navbar-admin')
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="#">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/f8eea84980.js"></script>
-</head>
+</head> --}}
 <body class="bg-dark">
         <!-- Another variation with a button -->
     <div class="container">
@@ -38,6 +38,7 @@
     </div>
 
     {{-- Content --}}
+    @foreach ($products as $item)
     <div class="container my-2">
         <div class="row justify-content-center my-2">
             <div class="card col-12 p-0">
@@ -54,7 +55,7 @@
                                         <h5>Azarine Oil Free Brightening Daily Mousturizer</h5>
                                     </div>
                                     <div class="card-button col-2 d-flex p-0 justify-content-end">
-                                        <button class="btn btn-secondary mx-2" type="button">
+                                        <button class="btn btn-secondary mx-2" type="button" onclick="location.href='{{url('updateproduct',['id' => $item->id])}}'">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                         <button class="btn btn-secondary" type="button">
@@ -70,6 +71,7 @@
               </div>
         </div>
     </div>
+    @endforeach
 
     {{-- Content --}}
     <div class="container my-2">
@@ -144,4 +146,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 </body>
-</html>
+{{-- </html> --}}

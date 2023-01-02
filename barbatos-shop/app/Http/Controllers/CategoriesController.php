@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoriesRequest;
 use App\Http\Requests\UpdateCategoriesRequest;
 use App\Models\Categories;
+use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
@@ -13,9 +14,10 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getProductByCategory(Request $request)
     {
-        //
+        $category = Categories::where('id',$request->id)->with('Categories')->get();
+        return view('home',compact('category'));
     }
 
     /**
